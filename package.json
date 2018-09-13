@@ -1,0 +1,28 @@
+{
+  "name": "appic-cli",
+  "version": "1.0.0",
+  "description": "cli",
+  "main": "lib/index.js",
+  "scripts": {
+    "commit": "git add . && git cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djkloop666/appic-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djkloop666/appic-cli/issues"
+  },
+  "homepage": "https://github.com/djkloop666/appic-cli#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
