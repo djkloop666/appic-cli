@@ -6,15 +6,16 @@ import * as path from 'path'
 import chalk from 'chalk'
 import * as fs from 'fs-extra'
 import * as inquirer from 'inquirer'
+import Creator from './creator/Creator'
+import { clearConsole } from '../util/clearConsole'
 
 const error = console.error
 const log = console.log
 const exit = process.exit
 
-interface inquirerIterFace {
+interface InquirerInterFace {
   action?: any
 }
-
 
 async function create (projectName: string, options: any) {
   // 处理路径
@@ -34,7 +35,8 @@ async function create (projectName: string, options: any) {
 
   // 判断是否存在同名目录
   if (fs.existsSync(targetDir)) {
-    const { action }: inquirerIterFace = await inquirer.prompt([
+    await clearConsole()
+    const { action }: InquirerInterFace = await inquirer.prompt([
       {
         name: 'action',
         type: 'list',
@@ -55,12 +57,18 @@ async function create (projectName: string, options: any) {
         ]
       }
     ])
+    // 如果没有选择直接退出
     if (!action) return
+    // 如果选择的是覆盖则需要优先删除以前的旧文件
     if (action === 'overwrite') {
       log(`\nRemoving ${chalk.cyan(targetDir)}...`)
       await fs.remove(targetDir)
     }
   }
+
+  const creator = new Creator(name, targetDir)
+  await creator.create(options)
+
 }
 
 module.exports = (name: string, opts: any) => {

@@ -9,7 +9,6 @@
     "watch": "./node_modules/.bin/tsc -w",
     "build:com": "node ./lib/bin/appic.js",
     "prepublish": "npm run build"
-
   },
   "bin": {
     "appic": "lib/bin/appic.js"
