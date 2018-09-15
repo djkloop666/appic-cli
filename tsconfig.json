@@ -16,7 +16,7 @@
     "outDir": "lib",
     "typeRoots": [
       "./node_modules/@types",
-      "./types"
+      "./typings/*.d.ts"
     ],
     "types": [
       "node"
