@@ -65,7 +65,7 @@ async function create (projectName: string, options: any) {
       await fs.remove(targetDir)
     }
   }
-
+  // 开始构建
   const creator = new Creator(name, targetDir)
   await creator.create(options)
 
